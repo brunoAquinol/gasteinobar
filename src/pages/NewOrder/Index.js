@@ -7,13 +7,13 @@ import styles from './Style';
 export default function NewOrder(){
     return(
         <View style={styles.container}>
-            <Text style={styles.menu}>testando</Text>
+            <Text style={styles.menu}>Criar Nova Comanda</Text>
                 <View style={styles.content}>
                     <Text style={styles.text}>Estabelecimento:</Text>
                     <Picker style={styles.pickerStyle}/>
                 </View>
                     <TouchableOpacity style={styles.addBtn}>
-                        <Text style={styles.addBtnTex}>+ Adicionar Novo Estabelecimento</Text>
+                        <Text style={styles.addBtnTex}>Adicionar Novo Estabelecimento</Text>
                     </TouchableOpacity>
                     
                 <View style={styles.content}>
@@ -21,7 +21,7 @@ export default function NewOrder(){
                     <Picker/>
                 </View>
                     <TouchableOpacity style={styles.addBtn}>
-                        <Text style={styles.addBtnTex}>+ Adicionar Novo Tipo de Pedido</Text>
+                        <Text style={styles.addBtnTex}>Adicionar Novo Tipo de Pedido</Text>
                     </TouchableOpacity>
 
                 <View style={styles.content}>
@@ -29,7 +29,7 @@ export default function NewOrder(){
                     <Picker/>
                 </View>
                     <TouchableOpacity style={styles.addBtn}>
-                        <Text style={styles.addBtnTex}>+ Adicionar Novo Produto</Text>
+                        <Text style={styles.addBtnTex}>Adicionar Novo Produto</Text>
                     </TouchableOpacity>
 
                 <View style={styles.contentPrice}>

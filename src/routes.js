@@ -18,10 +18,10 @@ export default function Routes(){
     return(
         <NavigationContainer>
             <AppStack.Navigator screenOptions={{headerShown: false}}>
+                <AppStack.Screen name="OrderPad" component={OrderPad} />
                 <AppStack.Screen name="Home" component={Home} />
                 <AppStack.Screen name="AddOrder" component={AddOrder} />
                 <AppStack.Screen name="NewOrder" component={NewOrder} />
-                <AppStack.Screen name="OrderPad" component={OrderPad} />
             </AppStack.Navigator> 
         </NavigationContainer>
     );

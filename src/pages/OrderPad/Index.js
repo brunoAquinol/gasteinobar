@@ -1,16 +1,32 @@
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {View, Text, CheckBox, TextInput, FlatList, TouchableOpacity, ScrollView} from 'react-native';
+import {View, Text, CheckBox, TextInput, FlatList, Image, TouchableOpacity, ScrollView} from 'react-native';
 import NumericInput from 'react-native-numeric-input';
 import Icon from 'react-native-vector-icons/Entypo';
+
+import logoImg from '../../assets/splash.png'
 
 import styles from './Style';
 
 
 export default function OrderPad(){
 
+    const navigation = useNavigation();
+
+    function navigateToAddOrder(){
+        navigation.navigate('AddOrder');
+    }
+
+
     return(
         <View style={styles.container}>
+            <View style={styles.header}>
+                <View style={{flexDirection:'row', alignItems:'center'}}>
+                <Image source={logoImg} style={{height:60, width:60}}/>
+                <Text>HEADER AREA</Text>
+                </View>
+                <Text>:</Text>
+            </View>
             <View style={styles.padText}>
                 <View>
                     <Text>Dividir</Text>
@@ -66,7 +82,7 @@ export default function OrderPad(){
                         </View>
                     </View>
 
-                    <TouchableOpacity style={styles.addButton} >
+                    <TouchableOpacity style={styles.addButton} onPress={navigateToAddOrder}>
                         <Text style={styles.addButtonTxt}>+</Text>
                     </TouchableOpacity>
                 

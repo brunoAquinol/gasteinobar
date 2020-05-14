@@ -13,7 +13,7 @@ export default function AddOrder(){
                     <Picker/>
                 </View>
                     <TouchableOpacity style={styles.addBtn}>
-                        <Text style={styles.addBtnTex}>+ Novo Tipo de Pedido</Text>
+                        <Text style={styles.addBtnTex}>Adicionar Novo Tipo de Pedido</Text>
                     </TouchableOpacity>
 
                 <View style={styles.content}>
@@ -21,7 +21,7 @@ export default function AddOrder(){
                     <Picker/>
                 </View>
                     <TouchableOpacity style={styles.addBtn}>
-                        <Text style={styles.addBtnTex}>+ Novo Produto</Text>
+                        <Text style={styles.addBtnTex}>Adicionar Novo Produto</Text>
                     </TouchableOpacity>
 
                 <View style={styles.contentPrice}>
