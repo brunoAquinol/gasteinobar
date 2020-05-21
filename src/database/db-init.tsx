@@ -11,13 +11,13 @@ export default class DatabaseInit{
 
     private InitDb(){
         var sql = [
-            `DROP TABLE IF EXISTS categoria;`,
+            `DROP TABLE IF EXISTS categProd;`,
             `DROP TABLE IF EXISTS produto;`,
             `DROP TABLE IF EXISTS itemPedido;`,
             `DROP TABLE IF EXISTS comanda;`,
             `DROP TABLE IF EXISTS estabelecimento;`,
 
-            `create table if not exists categoria(
+            `create table if not exists categProd(
                 id integer primary key autoincrement,
                 nome text,
             );`,
@@ -25,7 +25,7 @@ export default class DatabaseInit{
             `create table if not exists produto(
                 id integer primary key autoincrement,
                 nome text,
-                foreign key (idCategoria) references categoria (id)
+                foreign key (idCategoria) references categProd (id)
             );`,
 
             `create table if not exists estabelecimento(
@@ -48,14 +48,18 @@ export default class DatabaseInit{
                 horaFinal text,
                 data text,
                 qtdDivisao integer,
+                porcentGarcom interger,
+                couvertArt double,
+                valGarcom double,
+                valCouvert double,
                 totalSemDivisao double,
                 totalComDivisao double,
                 foreign key (idPedido) references itemPedido (id),
                 foreign key (idLocal) references estabelecimento (id)
             );`,
 
-            `insert into categoria(nome) values('Bebida');`,
-            `insert into categoria(nome) values('Petiscos');`
+            `insert into categProd (nome) values('Bebida');`,
+            `insert into categProd (nome) values('Petiscos');`
         ];
 
         db.transaction(
