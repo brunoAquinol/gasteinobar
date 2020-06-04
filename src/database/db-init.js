@@ -3,46 +3,47 @@ import {DatabaseConnection} from './db-connection';
 var db = null;
 
 export default class DatabaseInit{
-    constructor(){
-        db = DatabaseConnection.getConnection();
-        db.exec([{sql: 'PRAGMA foreign_keys = ON;', args:[]}], false, () => console.log('Foreign keys turned on'));
+    constructor() {
+        db = DatabaseConnection.getConnection()
+        db.exec([{ sql: 'PRAGMA foreign_keys = ON;', args: [] }], false, () =>
+        console.log('Foreign keys turned on')
+    );
         this.InitDb();
     }
 
-    private InitDb(){
+    InitDb(){
         var sql = [
-            `DROP TABLE IF EXISTS categProd;`,
-            `DROP TABLE IF EXISTS produto;`,
-            `DROP TABLE IF EXISTS itemPedido;`,
-            `DROP TABLE IF EXISTS comanda;`,
-            `DROP TABLE IF EXISTS estabelecimento;`,
 
-            `create table if not exists categProd(
-                id integer primary key autoincrement,
-                nome text,
-            );`,
-            
-            `create table if not exists produto(
-                id integer primary key autoincrement,
-                nome text,
-                foreign key (idCategoria) references categProd (id)
-            );`,
-
-            `create table if not exists estabelecimento(
+            `CREATE TABLE if not exists categProd(
                 id integer primary key autoincrement,
                 nome text
             );`,
-
-            `create table if not exists itemPedido(
+            
+            `CREATE TABLE if not exists produto(
                 id integer primary key autoincrement,
-                foreign key (idProduto) references produto (id),
-                foreign key (idComanda) references comanda (id),
-                quantidade integer,
-                valorUnidade double,
-                subtotal double            
+                nome text,
+                valor double,
+				idCategoria integer,
+                foreign key (idCategoria) references categProd (id)
             );`,
 
-            `create table if not exists comanda(
+            `CREATE TABLE if not exists estabelecimento(
+                id integer primary key autoincrement,
+                nome text not null
+            );`,
+
+            `CREATE TABLE if not exists itemPedido(
+                id integer primary key autoincrement,
+				idProduto INTEGER,
+				idComanda INTEGER,
+                quantidade integer,
+                valorUnidade double,
+                subtotal double,
+                foreign key (idProduto) references produto (id),
+                foreign key (idComanda) references comanda (id)				
+            );`,
+
+            `CREATE TABLE if not exists comanda(
                 id integer primary key autoincrement,
                 horaInicial text,
                 horaFinal text,
@@ -54,6 +55,8 @@ export default class DatabaseInit{
                 valCouvert double,
                 totalSemDivisao double,
                 totalComDivisao double,
+				idPedido integer,
+				idLocal integer,
                 foreign key (idPedido) references itemPedido (id),
                 foreign key (idLocal) references estabelecimento (id)
             );`,
